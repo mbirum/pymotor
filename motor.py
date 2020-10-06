@@ -1,7 +1,12 @@
 import RPi.GPIO as GPIO
 import time
+
 GPIO.setmode(GPIO.BOARD)
+
 control_pins = [7,11,13,15]
+sleep = 0.05
+
+# initialize pins
 for pin in control_pins:
   GPIO.setup(pin, GPIO.OUT)
   GPIO.output(pin, 0)
@@ -21,7 +26,7 @@ def open():
     for halfstep in range(8):
       for pin in range(4):
         GPIO.output(control_pins[pin], halfsteps[halfstep][pin])
-      time.sleep(0.001)
+      time.sleep(sleep)
 
 def close():
   halfsteps = [
@@ -38,7 +43,7 @@ def close():
     for halfstep in range(8):
       for pin in range(4):
         GPIO.output(control_pins[pin], halfsteps[halfstep][pin])
-      time.sleep(0.001)
+      time.sleep(sleep)
 
 open()
 time.sleep(2)
