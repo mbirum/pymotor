@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BOARD)
 
 control_pins = [7,11,13,15]
 sleep = 0.001
-mode = "half"
+mode = "full"
 
 # initialize pins
 for pin in control_pins:
