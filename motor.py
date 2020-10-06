@@ -25,7 +25,7 @@ for pin in control_pins:
   GPIO.output(pin, 0)
   
 def drive(step_sequence):
-  for i in range(128):
+  for i in range(rotation):
     for step in range(len(step_sequence)):
       for pin in range(4):
         GPIO.output(control_pins[pin], step_sequence[step][pin])
@@ -37,7 +37,7 @@ def open():
 def close():
   drive(steps.getCloseSequence())
 
-#open()
+open()
 #time.sleep(2)
-close()
+#close()
 GPIO.cleanup()
