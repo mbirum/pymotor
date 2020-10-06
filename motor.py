@@ -19,7 +19,7 @@ sleep = 0.001
 512 = 360 degrees
 """
 #rotation = ((128 - 64) / 2) + 64
-rotation = 10
+rotation = 3
 
 # initialize pins
 for pin in left_pins:
