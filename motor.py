@@ -4,7 +4,7 @@ import time
 GPIO.setmode(GPIO.BOARD)
 
 control_pins = [7,11,13,15]
-sleep = 0.05
+sleep = 0.0001
 
 # initialize pins
 for pin in control_pins:
