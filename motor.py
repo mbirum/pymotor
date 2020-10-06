@@ -26,7 +26,7 @@ def open():
     for halfstep in range(8):
       for pin in range(4):
         GPIO.output(control_pins[pin], halfsteps[halfstep][pin])
-      #time.sleep(sleep)
+      time.sleep(sleep)
 
 def close():
   halfsteps = [
@@ -43,7 +43,7 @@ def close():
     for halfstep in range(8):
       for pin in range(4):
         GPIO.output(control_pins[pin], halfsteps[halfstep][pin])
-      #time.sleep(sleep)
+      time.sleep(sleep)
 
 open()
 time.sleep(2)
