@@ -19,7 +19,7 @@ sleep = 0.001
 512 = 360 degrees
 """
 #rotation = ((128 - 64) / 2) + 64
-rotation = 4
+rotation = 2
 
 # initialize pins
 for pin in left_pins:
@@ -43,7 +43,7 @@ def open():
 def close():
   drive(steps.getCloseSequence())
 
-#open()
+open()
 time.sleep(2)
-close()
+#close()
 GPIO.cleanup()
