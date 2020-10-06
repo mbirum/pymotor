@@ -18,8 +18,7 @@ sleep = 0.001
 448 = 315 degrees
 512 = 360 degrees
 """
-#rotation = ((128 - 64) / 2) + 64
-rotation = 2
+rotation = ((128 - 64) / 2) + 64
 
 # initialize pins
 for pin in left_pins:
@@ -30,20 +29,22 @@ for pin in right_pins:
   GPIO.setup(pin, GPIO.OUT)
   GPIO.output(pin, 0)
   
-def drive(step_sequence):
+def drive(pins, step_sequence):
   for i in range(rotation):
     for step in range(len(step_sequence)):
       for pin in range(4):
-        GPIO.output(right_pins[pin], step_sequence[step][pin])
+        GPIO.output(pins[pin], step_sequence[step][pin])
       time.sleep(sleep)
 
 def open():
-  drive(steps.getOpenSequence())
+  drive(left_pins, steps.getForwardSequence())
+  drive(right_pins, steps.getBackwardSequence())
 
 def close():
-  drive(steps.getCloseSequence())
+  drive(left_pins, steps.getBackwardSequence())
+  drive(right_pins, steps.getForwardSequence())
 
 open()
 time.sleep(2)
-#close()
+close()
 GPIO.cleanup()
