@@ -13,7 +13,7 @@ for pin in control_pins:
   GPIO.output(pin, 0)
   
 def drive(step_sequence):
-  for i in range(64):
+  for i in range(128):
     for step in range(len(step_sequence)):
       for pin in range(4):
         GPIO.output(control_pins[pin], step_sequence[step][pin])
