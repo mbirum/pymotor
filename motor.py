@@ -17,10 +17,10 @@ halfstep_seq = [
 ]
 
 def setStep(w1, w2, w3, w4):
-  control_pins[0].value = w1
-  control_pins[1].value = w2
-  control_pins[2].value = w3
-  control_pins[3].value = w4
+  GPIO.output(control_pins[0], w1)
+  GPIO.output(control_pins[1], w2)
+  GPIO.output(control_pins[2], w3)
+  GPIO.output(control_pins[3], w4)
 
 #for i in range(512):
 #  for halfstep in range(8):
