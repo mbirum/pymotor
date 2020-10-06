@@ -6,7 +6,7 @@ for pin in control_pins:
   GPIO.setup(pin, GPIO.OUT)
   GPIO.output(pin, 0)
 
-def forward():
+def open():
   halfsteps = [
     [1,0,0,0],
     [1,1,0,0],
@@ -23,7 +23,7 @@ def forward():
         GPIO.output(control_pins[pin], halfsteps[halfstep][pin])
       time.sleep(0.001)
 
-def reverse():
+def close():
   halfsteps = [
     [1,0,0,1],
     [0,0,0,1],
@@ -40,6 +40,7 @@ def reverse():
         GPIO.output(control_pins[pin], halfsteps[halfstep][pin])
       time.sleep(0.001)
 
-forward()
-reverse()
+open()
+time.sleep(2)
+close()
 GPIO.cleanup()
