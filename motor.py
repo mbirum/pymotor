@@ -23,6 +23,7 @@ for i in range(10):
       GPIO.output(control_pins[pin], reverse[halfstep][pin])
     time.sleep(0.001)
   
+"""
 def open():
   halfsteps = [
     [1,0,0,0],
@@ -60,4 +61,5 @@ def close():
 open()
 time.sleep(2)
 close()
+"""
 GPIO.cleanup()
