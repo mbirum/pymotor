@@ -37,7 +37,7 @@ def open():
 def close():
   drive(steps.getCloseSequence())
 
-open()
+#open()
 #time.sleep(2)
-#close()
+close()
 GPIO.cleanup()
