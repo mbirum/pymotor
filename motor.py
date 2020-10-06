@@ -18,7 +18,8 @@ sleep = 0.001
 448 = 315 degrees
 512 = 360 degrees
 """
-rotation = ((128 - 64) / 2) + 64
+#rotation = ((128 - 64) / 2) + 64
+rotation = 10
 
 # initialize pins
 for pin in left_pins:
@@ -44,5 +45,5 @@ def close():
 
 open()
 time.sleep(2)
-close()
+#close()
 GPIO.cleanup()
