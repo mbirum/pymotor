@@ -1,49 +1,37 @@
 import RPi.GPIO as GPIO
 import time
+import steps
 
 GPIO.setmode(GPIO.BOARD)
 
 control_pins = [7,11,13,15]
 sleep = 0.001
+mode = "half"
 
 # initialize pins
 for pin in control_pins:
   GPIO.setup(pin, GPIO.OUT)
   GPIO.output(pin, 0)
   
-def open():
-  halfsteps = [
-    [1,0,0,0],
-    [1,1,0,0],
-    [0,1,0,0],
-    [0,1,1,0],
-    [0,0,1,0],
-    [0,0,1,1],
-    [0,0,0,1],
-    [1,0,0,1]
-  ]
+def drive(step_sequence):
   for i in range(100):
-    for halfstep in range(8):
+    for step in range(len(step_sequence)):
       for pin in range(4):
-        GPIO.output(control_pins[pin], halfsteps[halfstep][pin])
+        GPIO.output(control_pins[pin], step_sequence[step][pin])
       time.sleep(sleep)
 
+def open():
+  step_sequence = steps.getOpenHalf()
+  if "full" == mode:
+    step_sequence = steps.getOpenFull()
+  drive(step_sequence)
+
 def close():
-  halfsteps = [
-    [1,0,0,1],
-    [0,0,0,1],
-    [0,0,1,1],
-    [0,0,1,0],
-    [0,1,1,0],
-    [0,1,0,0],
-    [1,1,0,0],
-    [1,0,0,0]
-  ]
-  for i in range(100):
-    for halfstep in range(8):
-      for pin in range(4):
-        GPIO.output(control_pins[pin], halfsteps[halfstep][pin])
-      time.sleep(sleep)
+  step_sequence = steps.getCloseHalf()
+  if "full" == mode:
+    step_sequence = steps.getCloseFull()
+  drive(step_sequence)
+
 
 open()
 time.sleep(2)
