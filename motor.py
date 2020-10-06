@@ -28,7 +28,7 @@ def setStep(w1, w2, w3, w4):
 #      GPIO.output(control_pins[pin], halfstep_seq[halfstep][pin])
 #    time.sleep(0.001)
 
-delay = 0.001
+delay = 2000
 
 setStep(1, 0, 1, 0)
 time.sleep(delay)
