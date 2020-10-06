@@ -17,7 +17,7 @@ reverse = [
   [1,0,0,0]
 ]  
 
-for i in range(2):
+for i in range(5):
   for halfstep in range(8):
     for pin in range(4):
       GPIO.output(control_pins[pin], reverse[halfstep][pin])
