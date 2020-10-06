@@ -6,7 +6,6 @@ GPIO.setmode(GPIO.BOARD)
 
 control_pins = [7,11,13,15]
 sleep = 0.001
-mode = "full"
 
 # initialize pins
 for pin in control_pins:
@@ -21,20 +20,12 @@ def drive(step_sequence):
       time.sleep(sleep)
 
 def open():
-  step_sequence = steps.getOpenHalf()
-  if "full" == mode:
-    step_sequence = steps.getOpenFull()
-  drive(step_sequence)
+  drive(steps.getOpenSequence())
 
 def close():
-  step_sequence = steps.getCloseHalf()
-  if "full" == mode:
-    step_sequence = steps.getCloseFull()
-  drive(step_sequence)
-
+  drive(steps.getCloseSequence())
 
 open()
 time.sleep(2)
 close()
-
 GPIO.cleanup()
