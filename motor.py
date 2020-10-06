@@ -15,7 +15,7 @@ halfstep_seq = [
   [0,0,0,1],
   [1,0,0,1]
 ]
-for i in range(512):
+for i in range(768):
   for halfstep in range(4):
     for pin in range(4):
       GPIO.output(control_pins[pin], halfstep_seq[halfstep][pin])
